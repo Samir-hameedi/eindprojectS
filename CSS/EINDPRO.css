@@ -1,0 +1,787 @@
+/* ===========================
+   RESET & BASE
+=========================== */
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===========================
+   SCROLL TO TOP BUTTON
+=========================== */
+.top-btn {
+    position: fixed;
+    bottom: 22px;
+    right: 0px;
+    background: #999393;
+    color: white;
+    width: 37px;
+    height: 36px;
+    border-radius: 50%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    z-index: 100;
+}
+
+
+
+/* ===========================
+   HEADER
+=========================== */
+.head {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 200;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #222;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #e07b3a;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.92rem;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+}
+
+.menu a:hover {
+    color: #e07b3a;
+    border-bottom-color: #e07b3a;
+}
+
+/* DROPDOWN */
+.drop {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.drop summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #333;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+}
+
+.dlist {
+    position: absolute;
+    top: 30px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+    min-width: 150px;
+    padding: 0;
+    list-style: none;
+    z-index: 300;
+}
+
+.dlist a {
+    display: block;
+    padding: 9px 16px;
+    font-size: 0.88rem;
+    color: #333;
+    text-decoration: none;
+}
+
+.dlist a:hover {
+    background: #fff5ef;
+    color: #e07b3a;
+}
+
+.add-basket-btn:hover {
+    transform: scale(0.99);
+}
+
+
+/* SEARCH BOX */
+.box input {
+    border: 1.5px solid #ddd;
+    border-radius: 50px;
+    padding: 7px 16px;
+    background: #fafafa;
+    font-size: 0.88rem;
+    outline: none;
+}
+.D-L {
+    width: 52px;
+    height: 28px;
+    border-radius: 50px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 3px;
+    cursor: pointer;
+    transition: justify-content 0.3s ease;
+}
+
+
+
+.DL-click {
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+ 
+}
+
+
+/* BASKET BUTTON */
+.basket {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #333;
+    position: relative;
+}
+
+.basket:hover {
+    color: #e07b3a;
+}
+
+.basket-count {
+    background: #e07b3a;
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===========================
+   BASKET PANEL
+=========================== */
+.Basket-pl {
+    position: fixed;
+    bottom: 0;
+    right: -320px;
+    width: 300px;
+    height: 84vh;
+    background: #ffffff;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    z-index: 150;
+    transition: right 0.3s ease;
+}
+
+.basket-header {
+    padding: 16px 20px 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.basket-header h2 {
+    margin: 0;
+    font-size: 1rem;
+    color: #222;
+}
+
+/* Scrollable products list */
+.buy-producten {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+    overflow-y: auto;     /* ai */
+  
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Each basket item */
+.basket-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.basket-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.basket-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.basket-item-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #1a1814;
+    margin: 0 0 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.basket-item-price {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #e07b3a;
+    margin: 0 0 6px;
+}
+
+/* Quantity controls */
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.qty-btn {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #333;
+    line-height: 1;
+}
+
+.qty-btn:hover {
+    background: #e07b3a;
+    color: #fff;
+    border-color: #e07b3a;
+}
+
+.qty-number {
+    font-size: 0.88rem;
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Trash button */
+.trash-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #aaa;
+    padding: 4px;
+    flex-shrink: 0;
+}
+
+.trash-btn:hover {
+    color: #e53935;
+}
+
+/* Basket total */
+.basket-total {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    color: #333;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+.basket-total strong {
+    color: #e07b3a;
+    font-size: 1.1rem;
+}
+
+/* Bottom buttons */
+.BtnBasket {
+    display: flex;
+}
+
+.BtnBasket button {
+    width: 50%;
+    height: 52px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button-close {
+    background: #f1f1f1;
+    color: #333;
+}
+
+.button-close:hover {
+    background: #ddd;
+}
+
+.button-pay {
+    background: #22c55e;
+    color: white;
+}
+
+.button-pay:hover {
+    background: #16a34a;
+}
+
+/* ===========================
+   PRODUCT DETAIL OVERLAY
+=========================== */
+.detail-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 400;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.detail-overlay.active {
+    display: flex;
+}
+
+.detail-box {
+    background: #fff;
+    width: 90%;
+    max-width: 800px;
+    height: 30vh;
+    min-height: 220px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+
+.detail-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: #eee;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    z-index: 10;
+    font-weight: bold;
+    color: #333;
+}
+
+.detail-close:hover {
+    background: #e07b3a;
+    color: #fff;
+}
+
+.detail-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.detail-img {
+    width: 220px;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.detail-info {
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    overflow-y: auto;
+    /* ai */
+
+}
+
+.detail-model {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a09a92;
+}
+
+.detail-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1814;
+    margin: 0;
+}
+
+.detail-price {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #e07b3a;
+    margin: 0;
+}
+
+.detail-desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.7;
+}
+
+.detail-features {
+    font-size: 0.83rem;
+    color: #555;
+    padding-left: 16px;
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* ===========================
+   PRODUCTS GRID
+=========================== */
+.s-muis {
+    width: 100%;
+    padding: 120px 48px 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* PRODUCT CARD */
+.card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e8e4de;
+    width: 220px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img img {
+    width: 100%;
+    border-radius: 10px;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+    padding-top: 10px;
+}
+
+.card-model {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #a09a92;
+    margin: 0 0 4px;
+}
+
+.card-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1814;
+    line-height: 1.35;
+    margin-bottom: 8px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+.card-price {
+    font-size: 18px;
+    font-weight: 500;
+    color: #1a1814;
+    margin-bottom: 10px;
+}
+
+/* Card buttons */
+.card-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: auto;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    background: #1a1814;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #2e2a24;
+}
+
+.btn-details {
+    width: 100%;
+    padding: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    background: #fff;
+    color: #e07b3a;
+    border: 1.5px solid #e07b3a;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-details:hover {
+    background: #fff5ef;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.foot {
+    background: #1a1a1a;
+    min-height: 50vh;
+    padding: 60px 48px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.fcol {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.flogo {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+}
+
+.flogo span {
+    color: #e07b3a;
+}
+
+.ftag {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.ftitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.fcol a {
+    text-decoration: none;
+    color: #aaa;
+    font-size: 0.88rem;
+}
+
+.fcol a:hover {
+    color: #e07b3a;
+}
+
+.srow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sicon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.sicon img {
+    width: 30px;
+    height: 30px;
+}
+
+.sicon:hover {
+    opacity: 0.8;
+}
+
+.fbot {
+    width: 100%;
+    border-top: 1px solid #333;
+    padding-top: 24px;
+    font-size: 0.8rem;
+    color: #555;
+    text-align: center;
+}
+
+/* ===========================
+   ABOUT PAGE
+=========================== */
+.about {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 50px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.about h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.about h1 span {
+    color: #e07b3a;
+}
+
+.about p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* ===========================
+   BLOG PAGE
+=========================== */
+.blog {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 100px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.blog h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.blog h1 span {
+    color: #e07b3a;
+}
+
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.post {
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px;
+    flex: 1;
+    min-width: 180px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.post h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.post p {
+    font-size: 0.85rem;
+    color: #777;
+    line-height: 1.6;
+}
+
+.post a {
+    color: #e07b3a;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.post a:hover {
+    text-decoration: underline;
+}
