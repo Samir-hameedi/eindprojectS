@@ -694,9 +694,9 @@ body {
    ABOUT PAGE
 =========================== */
 .about {
-    max-width: 700px;
+    max-width: 800px;
     margin: 60px auto;
-    padding: 50px 24px;
+    padding: 50px 0px;
     display: flex;
     flex-direction: column;
     gap: 24px;
