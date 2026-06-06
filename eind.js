@@ -15,12 +15,6 @@ const DetailContent = document.querySelector(".detail-content");
 const DL = document.querySelector(".D-L");
 const div = document.querySelector('div');
 const all = document.querySelectorAll('body', 'div', 'section',)
-
-
-
-
-
-
 // ============================================
 // BASKET STATE
 // basket is an array of objects: { product, quantity }
