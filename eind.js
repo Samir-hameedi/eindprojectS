@@ -14,12 +14,18 @@ const DetailClose = document.querySelector(".detail-close");
 const DetailContent = document.querySelector(".detail-content");
 const DL = document.querySelector(".D-L");
 const div = document.querySelector('div');
+const search = document.querySelector('.box input');
 const all = document.querySelectorAll('body', 'div', 'section',)
+
 // ============================================
 // BASKET STATE
-// basket is an array of objects: { product, quantity }
 // ============================================
 let basket = [];
+
+// ============================================
+// GLOBAL PRODUCTS
+// ============================================
+let allProducts = [];
 
 // ============================================
 // PRODUCT LIST
@@ -39,9 +45,14 @@ const products = [
 // RENDER PRODUCT CARDS
 // ============================================
 async function renderProducts() {
-  let products = await runQuery("SELECT * FROM product");
+  allProducts = await runQuery("SELECT * FROM product");
+  showProducts(allProducts);
+}
 
-  products.forEach(function (p, index) {
+function showProducts(list) {
+  Smuis.innerHTML = "";
+
+  list.forEach(function (p, index) {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
@@ -51,7 +62,7 @@ async function renderProducts() {
   <div class="card-body">
     <p class="card-model">${p.namee}</p>
     <p class="card-name">${p.namee}</p>
-    <p class="card-price">€${parseFloat(p.price).toFixed(2)}</p>
+    <p class="card-price">€${p.price}</p>
     <div class="card-buttons">
       <button class="btn add-basket-btn">Add to basket</button>
       <button class="btn-details more-details-btn">More details</button>
@@ -77,8 +88,6 @@ async function renderProducts() {
 // ADD PRODUCT TO BASKET
 // ============================================
 function addToBasket(product) {
-
-  // Check if this product is already in the basket
   let found = null;
   for (let i = 0; i < basket.length; i++) {
     if (basket[i].product.name === product.name && basket[i].product.model === product.model) {
@@ -88,10 +97,8 @@ function addToBasket(product) {
   }
 
   if (found) {
-    // Product already in basket: just increase quantity
     found.quantity = found.quantity + 1;
   } else {
-    // New product: add to basket array
     basket.push({ product, quantity: 1 });
   }
 
@@ -102,8 +109,6 @@ function addToBasket(product) {
 // RENDER BASKET ITEMS
 // ============================================
 function renderBasket() {
-
-  // Clear current basket display
   BuyProducten.innerHTML = "";
 
   if (basket.length === 0) {
@@ -111,7 +116,6 @@ function renderBasket() {
   }
 
   basket.forEach(function (item, index) {
-
     const div = document.createElement("div");
     div.className = "basket-item";
 
@@ -143,31 +147,27 @@ function renderBasket() {
 
     BuyProducten.appendChild(div);
 
-    // Plus button: increase quantity
     const plusBtn = div.querySelector(".qty-plus");
     plusBtn.addEventListener("click", function () {
       basket[index].quantity = basket[index].quantity + 1;
       renderBasket();
     });
 
-    // Minus button: decrease quantity or remove
     const minusBtn = div.querySelector(".qty-minus");
     minusBtn.addEventListener("click", function () {
       if (basket[index].quantity > 1) {
         basket[index].quantity = basket[index].quantity - 1;
       } else {
-        basket.splice(index, 1); // remove item from array
+        basket.splice(index, 1);
       }
       renderBasket();
     });
 
-    // Trash button: remove item completely
     const trashBtn = div.querySelector(".trash-btn");
     trashBtn.addEventListener("click", function () {
       basket.splice(index, 1);
       renderBasket();
     });
-
   });
 
   updateBasketTotal();
@@ -205,12 +205,11 @@ function openDetail(product) {
 
   DetailOverlay.classList.add("active");
 }
-// Close detail overlay
+
 DetailClose.addEventListener("click", function () {
   DetailOverlay.classList.remove("active");
 });
 
-// Also close when clicking the dark background
 DetailOverlay.addEventListener("click", function (e) {
   if (e.target === DetailOverlay) {
     DetailOverlay.classList.remove("active");
@@ -218,6 +217,7 @@ DetailOverlay.addEventListener("click", function (e) {
 });
 
 // ============================================
+// BASKET PANEL OPEN/CLOSE
 // ============================================
 BasketBtn.addEventListener("click", function () {
   BasketPanel.style.right = "0px";
@@ -230,15 +230,15 @@ CloseBtn.addEventListener("click", function () {
   TopBtn.style.right = "0";
   Smuis.style.paddingRight = "48px";
 });
+
 // ============================================
+// INIT
 // ============================================
 renderProducts();
 renderBasket();
 
-
 DL.addEventListener("click", function () {
   if (DL.style.justifyContent === "flex-start") {
-
     DL.style.justifyContent = "flex-end";
     DL.style.backgroundColor = "black";
     document.body.style.backgroundColor = "black";
@@ -250,6 +250,18 @@ DL.addEventListener("click", function () {
     document.body.style.backgroundColor = "white";
     card.style.backgroundColor = "white";
     card.style.color = "grey";
-
   }
+});
+
+// ============================================
+// SEARCH
+// ============================================
+search.addEventListener("input", function () {
+  const value = search.value.toLowerCase();
+
+  const filtered = allProducts.filter(function (product) {
+    return product.namee.toLowerCase().includes(value);
+  });
+
+  showProducts(filtered);
 });

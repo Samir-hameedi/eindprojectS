@@ -8,20 +8,20 @@
 
 // --- READ: alle producten tonen in de lijst ---
 async function toonBeheerLijst() {
-    const producten = await runQuery("SELECT productid, naam, prijs, categorie_id FROM producten");
-
+    const producten = await runQuery("SELECT productid, namee, price, imgURL, model, info, features FROM product");
+ 
     const lijst = document.getElementById("productenLijst");
     lijst.innerHTML = "";   // Eerst leegmaken
-
+ 
     for (const product of producten) {
         const item = document.createElement("li");
-
+ 
         // Tekst van het product
         const tekst = document.createTextNode(
-            product.naam + " - \u20ac" + product.prijs + " "
+            product.namee + " - \u20ac" + product.price + " "
         );
         item.appendChild(tekst);
-
+ 
         // Knop: bewerken -> zet het product in het formulier
         const bewerkKnop = document.createElement("button");
         bewerkKnop.textContent = "Bewerken";
@@ -29,66 +29,78 @@ async function toonBeheerLijst() {
             formulierVullen(product);
         });
         item.appendChild(bewerkKnop);
-
+ 
         // Knop: verwijderen
         const verwijderKnop = document.createElement("button");
         verwijderKnop.textContent = "Verwijderen";
         verwijderKnop.addEventListener("click", function () {
-            productVerwijderen(product.id);
+            productVerwijderen(product.productid);
         });
         item.appendChild(verwijderKnop);
-
+ 
         lijst.appendChild(item);
     }
 }
-
+ 
 // --- Formulier vullen met een bestaand product (voor bewerken) ---
 function formulierVullen(product) {
     document.getElementById("productId").value = product.productid;
-    document.getElementById("naam").value = product.naam;
-    document.getElementById("prijs").value = product.prijs;
-    document.getElementById("categorieId").value = product.categorie_id;
+    document.getElementById("namee").value = product.namee;
+    document.getElementById("price").value = product.price;
+    document.getElementById("imgURL").value = product.imgURL;
+    document.getElementById("model").value = product.model;
+    document.getElementById("info").value = product.info;
+    document.getElementById("features").value = product.features;
 }
-
+ 
 // --- Formulier leegmaken (na opslaan of bij annuleren) ---
 function formulierLeegmaken() {
     document.getElementById("productId").value = "";
-    document.getElementById("naam").value = "";
-    document.getElementById("prijs").value = "";
-    document.getElementById("categorieId").value = "";
+    document.getElementById("namee").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("imgURL").value = "";
+    document.getElementById("model").value = "";
+    document.getElementById("info").value = "";
+    document.getElementById("features").value = "";
 }
-
+ 
 // --- CREATE of UPDATE: opslaan ---
 // Is het verborgen id leeg -> nieuw product (INSERT).
 // Staat er een id -> bestaand product (UPDATE).
 async function productOpslaan() {
     const id = document.getElementById("productId").value;
-    const naam = document.getElementById("naam").value;
-    const prijs = document.getElementById("prijs").value;
-    const categorieId = document.getElementById("categorieId").value;
-
+    const namee = document.getElementById("namee").value;
+    const price = document.getElementById("price").value;
+    const imgURL = document.getElementById("imgURL").value;
+    const model = document.getElementById("model").value;
+    const info = document.getElementById("info").value;
+    const features = document.getElementById("features").value;
+ 
     let sql;
-
+ 
     if (id === "") {
         // CREATE: nieuw product toevoegen
-        sql = "INSERT INTO producten (naam, prijs, categorie_id) " +
-              "VALUES ('" + naam + "', " + prijs + ", " + categorieId + ")";
+        sql = "INSERT INTO product (namee, price, imgURL, model, info, features) " +
+              "VALUES ('" + namee + "', " + price + ", '" + imgURL + "', '" + model + "', '" + info + "', '" + features + "')";
     } else {
         // UPDATE: bestaand product wijzigen
-        sql = "UPDATE producten SET " +
-              "naam = '" + naam + "', " +
-              "prijs = " + prijs + ", " +
-              "categorie_id = " + categorieId + " " +
+        sql = "UPDATE product SET " +
+              "namee = '" + namee + "', " +
+              "price = " + price + ", " +
+              "imgURL = '" + imgURL + "', " +
+              "model = '" + model + "', " +
+              "info = '" + info + "', " +
+              "features = '" + features + "' " +
               "WHERE productid = " + id;
     }
-
+ 
     await runQuery(sql);
-
+ 
     // Formulier leegmaken en lijst opnieuw laden
     formulierLeegmaken();
     toonBeheerLijst();
 }
-
+ 
 // --- DELETE: verwijderen ---
 async function productVerwijderen(id) {
     // Vraag eerst om bevestiging
@@ -96,9 +108,13 @@ async function productVerwijderen(id) {
     if (!zeker) {
         return;
     }
-
-    await runQuery("DELETE FROM producten WHERE productid = " + id);
-
+ 
+    await runQuery("DELETE FROM product WHERE productid = " + id);
+ 
     // Lijst opnieuw laden
     toonBeheerLijst();
 }
+  
+
+
+
