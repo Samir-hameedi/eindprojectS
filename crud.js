@@ -83,6 +83,8 @@ async function productOpslaan() {
         sql = "INSERT INTO product (namee, price, imgURL, model, info, features) " +
               "VALUES ('" + namee + "', " + price + ", '" + imgURL + "', '" + model + "', '" + info + "', '" + features + "')";
     } else {
+
+        
         // UPDATE: bestaand product wijzigen
         sql = "UPDATE product SET " +
               "namee = '" + namee + "', " +

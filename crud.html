@@ -1,65 +1,83 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <title>Producten beheren</title>
+    <link rel="stylesheet" href="CSS/EINDPRO.css">
 </head>
+
 <body>
 
-    <h1>Producten beheren</h1>
 
-    <!-- <p><a href="index.html">Terug naar de lijst</a></p> -->
+    <div class="crud-html">
 
-    <!-- Formulier: toevoegen OF bewerken -->
-    <h2>Product toevoegen / bewerken</h2>
 
-    <!-- Verborgen veld: leeg = toevoegen, gevuld = bewerken -->
-    <input type="hidden" id="productId">
+        <div class="product-toevogen">
 
-    <p>
-        Naam:
-        <input type="text" id="namee">
-    </p>
-    <p>
-        Prijs:
-        <input type="number" id="price" step="0.01">
-    </p>
-    <p>
-        Afbeelding URL:
-        <input type="text" id="imgURL">
-    </p>
-    <p>
-        Model:
-        <input type="text" id="model">
-    </p>
-    <p>
-        Info:
-        <input type="text" id="info">
-    </p>
-    <p>
-        Features:
-        <input type="text" id="features">
-    </p>
-    <p>
-        <button id="opslaanKnop">Opslaan</button>
-        <button id="annuleerKnop">Annuleren</button>
-    </p>
 
-    <!-- Lijst met alle producten + bewerk/verwijder knoppen -->
-    <h2>Alle producten</h2>
-    <ul id="productenLijst"></ul>
 
-    <!-- Eerst de helper, dan de CRUD-functies -->
-    <script src="app.js"></script>
-    <script src="crud.js"></script>
-    <script>
-        // Koppel de knoppen aan hun functies
-        document.getElementById("opslaanKnop").addEventListener("click", productOpslaan);
-        document.getElementById("annuleerKnop").addEventListener("click", formulierLeegmaken);
+            <h1>Producten beheren</h1>
 
-        // Toon de lijst zodra de pagina geladen is
-        toonBeheerLijst();
-    </script>
+            <!-- <p><a href="index.html">Terug naar de lijst</a></p> -->
 
+            <!-- Formulier: toevoegen OF bewerken -->
+            <h2>Product toevoegen / bewerken</h2>
+
+            <!-- Verborgen veld: leeg = toevoegen, gevuld = bewerken -->
+            <input type="hidden" id="productId">
+
+            <p>
+                Naam:
+                <input type="text" id="namee">
+            </p>
+            <p>
+                Prijs:
+                <input type="number" id="price" step="0.01">
+            </p>
+            <p>
+                Afbeelding URL:
+                <input type="text" id="imgURL">
+            </p>
+            <p>
+                Model:
+                <input type="text" id="model">
+            </p>
+            <p>
+                Info:
+                <input type="text" id="info">
+            </p>
+            <p>
+                Features:
+                <input type="text" id="features">
+            </p>
+            <p>
+                <button id="opslaanKnop">Opslaan</button>
+                <button id="annuleerKnop">Annuleren</button>
+            </p>
+        </div>
+
+        <div class="product-tonen">
+
+
+            <!-- Lijst met alle producten + bewerk/verwijder knoppen -->
+            <h2>Alle producten</h2>
+            <ul id="productenLijst"></ul>
+
+            <!-- Eerst de helper, dan de CRUD-functies -->
+            <script src="app.js"></script>
+            <script src="crud.js"></script>
+            <script>
+                // Koppel de knoppen aan hun functies
+                document.getElementById("opslaanKnop").addEventListener("click", productOpslaan);
+                document.getElementById("annuleerKnop").addEventListener("click", formulierLeegmaken);
+
+                // Toon de lijst zodra de pagina geladen is
+                toonBeheerLijst();
+            </script>
+        </div>
+
+    </div>
 </body>
+
 </html>

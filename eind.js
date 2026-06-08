@@ -45,7 +45,7 @@ const products = [
 // RENDER PRODUCT CARDS
 // ============================================
 async function renderProducts() {
-  allProducts = await runQuery("SELECT * FROM product");
+  allProducts = await runQuery("SELECT productid, namee, price, imgURL, model, info, features FROM product");
   showProducts(allProducts);
 }
 

@@ -783,3 +783,22 @@ body {
 .post a:hover {
     text-decoration: underline;
 }
+
+/* ===========================
+   crud page
+=========================== */
+
+.crud-html
+{
+    /* display: flex;
+    flex-direction: row; */
+}
+.product-toevogen
+{
+
+}
+
+.product-tonen
+{
+
+}
