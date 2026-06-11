@@ -819,7 +819,6 @@ body {
 .product-toevogen input {
     width: 100%;
     padding: 10px;
-    border: none;
     border-radius: 8px;
     margin-top: 5px;
 }
@@ -832,7 +831,7 @@ body {
     font-weight: bold;
     transition: 0.3s;
 }
-
+ 
 #opslaanKnop {
     background: white;
     color:#e07b3a;
