@@ -44,7 +44,6 @@ const link = document.querySelector(".M-categorie");
 
 link.addEventListener("click", function () {
     search.value = "del";
-    search.style.z-index == "-1"; 
 });
 
 let allProducts = [];
