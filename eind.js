@@ -15,40 +15,44 @@ const DetailContent = document.querySelector(".detail-content");
 const DL = document.querySelector(".D-L");
 const div = document.querySelector('div');
 const search = document.querySelector('.box input');
-const all = document.querySelectorAll('body', 'div', 'section',)
+const all = document.querySelectorAll('body', 'div', 'section', 'header')
 
 // ============================================
 // BASKET STATE
 // ============================================
 let basket = [];
-
-// ============================================
-// GLOBAL PRODUCTS
-// ============================================
-let allProducts = [];
-
 // ============================================
 // PRODUCT LIST
 // ============================================
-const products = [
-  {
-    model: "Wireless Headphones",
-    imgURL: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
-    name: "Premium noise-cancelling wireless headphones",
-    price: 79.99,
-    description: "Experience superior sound quality with active noise cancellation. Perfect for music lovers and professionals alike.",
-    features: ["Active Noise Cancellation", "30-hour battery life", "Bluetooth 5.0", "Foldable design", "Built-in microphone"]
-  },
-];
+// const products = [
+//   {
+//     model: "Wireless Headphones",
+//     imgURL: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+//     namee: "Premium noise-cancelling wireless headphones",
+//     price: 79.99,
+//     description: "Experience superior sound quality with active noise cancellation. Perfect for music lovers and professionals alike.",
+//     features: ["Active Noise Cancellation", "30-hour battery life", "Bluetooth 5.0", "Foldable design", "Built-in microphone"]
+//   },
+// ];
 
 // ============================================
-// RENDER PRODUCT CARDS
+// PRODUCT CARDS
 // ============================================
+
+
+const link = document.querySelector(".M-categorie");
+
+link.addEventListener("click", function () {
+    search.value = "del";
+    search.style.z-index == "-1"; 
+});
+
+let allProducts = [];
 async function renderProducts() {
   allProducts = await runQuery("SELECT productid, namee, price, imgURL, model, info, features FROM product");
   showProducts(allProducts);
 }
-
+ 
 function showProducts(list) {
   Smuis.innerHTML = "";
 
@@ -69,7 +73,6 @@ function showProducts(list) {
     </div>
   </div>
 `;
-
     Smuis.appendChild(card);
 
     const addBtn = card.querySelector(".add-basket-btn");
@@ -85,7 +88,7 @@ function showProducts(list) {
 }
 
 // ============================================
-// ADD PRODUCT TO BASKET
+// ADD TO BASKET
 // ============================================
 function addToBasket(product) {
   let found = null;
@@ -99,14 +102,14 @@ function addToBasket(product) {
   if (found) {
     found.quantity = found.quantity + 1;
   } else {
-    basket.push({ product, quantity: 1 });
+    basket.push({ product, quantity : 1 });
   }
 
   renderBasket();
 }
 
 // ============================================
-// RENDER BASKET ITEMS
+// BASKET ITEMS
 // ============================================
 function renderBasket() {
   BuyProducten.innerHTML = "";
@@ -174,7 +177,7 @@ function renderBasket() {
 }
 
 // ============================================
-// UPDATE BASKET TOTAL & COUNTER
+// BASKET TOTAL COUNTER
 // ============================================
 function updateBasketTotal() {
   let total = 0;
@@ -195,7 +198,7 @@ function openDetail(product) {
     <div class="detail-info">
       <p class="detail-model">${product.model}</p>
       <h2 class="detail-name">${product.namee}</h2>
-      <p class="detail-price">€${(+product.price).toFixed(2)}</p>
+      <p class="detail-price">€${Number(product.price).toFixed(2)}</p>
       <p class="detail-desc">${product.info}</p>
       <ul class="detail-features">
         <li>${product.features}</li>
@@ -217,7 +220,7 @@ DetailOverlay.addEventListener("click", function (e) {
 });
 
 // ============================================
-// BASKET PANEL OPEN/CLOSE
+// BASKET ==> OPEN/CLOSE
 // ============================================
 BasketBtn.addEventListener("click", function () {
   BasketPanel.style.right = "0px";
@@ -232,10 +235,7 @@ CloseBtn.addEventListener("click", function () {
 });
 
 // ============================================
-// INIT
 // ============================================
-renderProducts();
-renderBasket();
 
 DL.addEventListener("click", function () {
   if (DL.style.justifyContent === "flex-start") {
@@ -254,7 +254,7 @@ DL.addEventListener("click", function () {
 });
 
 // ============================================
-// SEARCH
+// // SEARCH
 // ============================================
 search.addEventListener("input", function () {
   const value = search.value.toLowerCase();
@@ -265,3 +265,9 @@ search.addEventListener("input", function () {
 
   showProducts(filtered);
 });
+
+
+////////////////////////////////////
+renderProducts();
+renderBasket();
+/////////////////////////////////

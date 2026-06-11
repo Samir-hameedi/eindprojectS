@@ -8,7 +8,7 @@
 
 // --- READ: alle producten tonen in de lijst ---
 async function toonBeheerLijst() {
-    const producten = await runQuery("SELECT productid, namee, price, imgURL, model, info, features FROM product");
+    const producten = await runQuery("SELECT productid, namee, price , imgURL, model, info, features FROM product");
  
     const lijst = document.getElementById("productenLijst");
     lijst.innerHTML = "";   // Eerst leegmaken
@@ -24,7 +24,7 @@ async function toonBeheerLijst() {
  
         // Knop: bewerken -> zet het product in het formulier
         const bewerkKnop = document.createElement("button");
-        bewerkKnop.textContent = "Bewerken";
+        bewerkKnop.textContent = "📝";
         bewerkKnop.addEventListener("click", function () {
             formulierVullen(product);
         });
@@ -32,7 +32,7 @@ async function toonBeheerLijst() {
  
         // Knop: verwijderen
         const verwijderKnop = document.createElement("button");
-        verwijderKnop.textContent = "Verwijderen";
+        verwijderKnop.textContent = "🗑️";
         verwijderKnop.addEventListener("click", function () {
             productVerwijderen(product.productid);
         });
