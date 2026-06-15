@@ -18,6 +18,88 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+/* ///////////////////////////////////// */
+/* /////////////D/L///////////////////  */
+/* ////////////////////////////////////*/
+.dark-mode {
+    background: #121212;
+    color: white;
+}
+
+.dark-mode .head {
+    background: #1e1e1e;
+    box-shadow: 0 4px 12px rgba(255,255,255,0.05);
+}
+
+.dark-mode .logo,
+.dark-mode .menu a,
+.dark-mode .basket,
+.dark-mode .drop summary {
+    color: #f0f0f0;
+}
+
+.dark-mode .card {
+    background: #1e1e1e;
+    border-color: #333;
+}
+
+.dark-mode .card-name,
+.dark-mode .card-price {
+    color: #f0f0f0;
+}
+
+.dark-mode .Basket-pl {
+    background: #1e1e1e;
+}
+
+.dark-mode .basket-header h2,
+.dark-mode .basket-item-name,
+.dark-mode .qty-number {
+    color: #f0f0f0;
+}
+
+.dark-mode .basket-item {
+    background: #2a2a2a;
+    border-color: #444;
+}
+
+.dark-mode .qty-btn {
+    background: #333;
+    border-color: #555;
+    color: #f0f0f0;
+}
+
+.dark-mode .detail-box {
+    background: #1e1e1e;
+}
+
+.dark-mode .detail-name,
+.dark-mode .detail-desc,
+.dark-mode .detail-features {
+    color: #ddd;
+}
+
+.dark-mode .dlist {
+    background: #1e1e1e;
+    border-color: #444;
+}
+
+.dark-mode .dlist a {
+    color: #f0f0f0;
+}
+
+.dark-mode .box input {
+    background: #333;
+    color: white;
+    border-color: #555;
+}
+
+
+.dark-mode .D-L {
+    background-color: #e07b3a;
+    justify-content: flex-end;
+}
+
 /* ===========================
    SCROLL TO TOP BUTTON
 =========================== */

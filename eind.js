@@ -12,10 +12,19 @@ const TotalPrice = document.querySelector(".total-price");
 const DetailOverlay = document.querySelector(".detail-overlay");
 const DetailClose = document.querySelector(".detail-close");
 const DetailContent = document.querySelector(".detail-content");
-const DL = document.querySelector(".D-L");
+const btn = document.querySelector(".DL-click");
 const div = document.querySelector('div');
 const search = document.querySelector('.box input');
-const all = document.querySelectorAll('body', 'div', 'section', 'header')
+///////////////////////////////////////////////////
+//////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+btn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    document.body.classList.toggle("light-mode");
+    const isDark = document.body.classList.contains("dark-mode");
+    btn.textContent = isDark ? "🌙" : "☀️";
+});
 
 // ============================================
 // BASKET STATE
@@ -39,11 +48,29 @@ let basket = [];
 // PRODUCT CARDS
 // ============================================
 
+btn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    document.body.classList.toggle("light-mode");
 
-const link = document.querySelector(".M-categorie");
+    
+    const isDark = document.body.classList.contains("dark-mode");
+    btn.textContent = isDark ? "🌙" : "☀️";
+});
 
-link.addEventListener("click", function () {
-    search.value = "del";
+btn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+});
+
+
+const monitor = document.querySelector(".mon-categorie");
+const mobile = document.querySelector(".mob-categorie");
+
+
+monitor.addEventListener("click", function () {
+    search.value = "hp";
+});
+mobile.addEventListener("click", function () {
+    search.value = "hp";
 });
 
 let allProducts = [];
@@ -233,24 +260,6 @@ CloseBtn.addEventListener("click", function () {
   Smuis.style.paddingRight = "48px";
 });
 
-// ============================================
-// ============================================
-
-DL.addEventListener("click", function () {
-  if (DL.style.justifyContent === "flex-start") {
-    DL.style.justifyContent = "flex-end";
-    DL.style.backgroundColor = "black";
-    document.body.style.backgroundColor = "black";
-    all.style.backgroundColor = "grey";
-    card.style.color = "white";
-  } else {
-    DL.style.justifyContent = "flex-start";
-    DL.style.backgroundColor = "grey";
-    document.body.style.backgroundColor = "white";
-    card.style.backgroundColor = "white";
-    card.style.color = "grey";
-  }
-});
 
 // ============================================
 // // SEARCH
