@@ -1,24 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>contact</title>
+    <link rel="stylesheet" href="CSS/EINDPRO.css">
 </head>
+
 <body>
-    <header class="head">
 
-        <a class="logo" href="EINDPROJECT.html">Lux<span>Shop</span></a>
+    <body class="light-mode">
 
-        <nav class="menu">
-           
-            <a href="EINDPROJECT.html">Home</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+        <!-- HEADER -->
 
-        <div class="box">
-            <input type="text" placeholder="Search..." />
-          </div></header>
-</body>
+        <h1 class="name"></h1>
+        <header class="head">
+            <a class="logo" href="EINDPROJECT.html">Lux<span>Shop</span></a>
+
+            <div class="menu">
+                <details class="drop">
+                    <summary>Categories ⌵</summary>
+                    <ul class="dlist">
+                        <li><a class="M-categorie" href="#">🖱 Mouse</a></li>
+                        <li><a class="mon-categorie" href="#">🖥 Monitor</a></li>
+                        <li><a class="key-categorie" href="#">⌨️ Keyboard</a></li>
+                        <li><a class="mob-categorie" href="#">📱 Mobile</a></li>
+
+
+                    </ul>
+                </details>
+                <a href="about.html">About</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="box">
+                <input type="text" placeholder="Search..." />
+            </div>
+            <div class="D-L">
+                <div class="DL-click">☀️</div>
+            </div>
+            <div class="basket">
+                <span>🛒</span>
+                <span>Basket</span>
+                <span class="basket-count">0</span>
+            </div>
+        </header>
+
+        <!-- BASKET PANEL -->
+        <div class="Basket-pl">
+            <div class="basket-header">
+                <h2>🛒 Your Basket</h2>
+            </div>
+            <div class="buy-producten"></div>
+            <div class="basket-total">
+                <strong class="total-price">€0.00</strong>
+            </div>
+            <div class="BtnBasket">
+                <button class="button-close">CLOSE</button>
+                <button class="button-pay">PAY NOW</button>
+            </div>
+        </div>
+
+        <section class="s-muis">
+
+
+            <div class="page">
+
+                <div class="header">
+                    <h1><i class="ti ti-headset"></i> Contact Us</h1>
+                    <p>Have a question? We're happy to help.</p>
+                </div>
+
+                <div class="contact-wrapper">
+
+                    <!-- Info Cards -->
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <div class="info-icon"><i class="ti ti-map-pin"></i></div>
+                            <div class="info-text">
+                                <p>Address</p>
+                                <p>123 Main Street, leuven</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon"><i class="ti ti-phone"></i></div>
+                            <div class="info-text">
+                                <p>Phone</p>
+                                <p>+32 466 75 678 2</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon"><i class="ti ti-mail"></i></div>
+                            <div class="info-text">
+                                <p>Email</p>
+                                <p>support@luxshop.com</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon"><i class="ti ti-clock"></i></div>
+                            <div class="info-text">
+                                <p>Working Hours</p>
+                                <p>Mon – Fri, 9am to 6pm</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" placeholder="e.g. Misha" id="fname" />
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" placeholder="Smith" id="lname" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="you@example.com" id="femail" />
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <select id="fsubject">
+                                <option value="">Select a topic...</option>
+                                <option>Product Question</option>
+                                <option>Order Tracking</option>
+                                <option>Returns & Refunds</option>
+                                <option>Partnership</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea placeholder="Write your message here..." id="fmsg"></textarea>
+                        </div>
+                        <button class="submit-btn">
+                            <i class="ti ti-send"></i> Send Message
+                        </button>
+                 
+                    </div>
+
+                </div>
+
+
+
+        </section>
+
+
+
+
+
+        <footer class="foot">
+            <div class="fcol">
+                <h1 class="flogo">Lux<span>Shop</span></h1>
+                <p class="ftag">Your favourite online shop</p>
+                <div class="srow">
+                    <a class="sicon" href="https://facebook.com">
+                        <img src="AFBEELDING/facebook.png" alt="Facebook" />
+                    </a>
+                    <a class="sicon" href="https://instagram.com">
+                        <img src="AFBEELDING/social.png" alt="Instagram" />
+                    </a>
+                    <a class="sicon" href="https://youtube.com">
+                        <img src="AFBEELDING/youtube.png" alt="YouTube" />
+                    </a>
+                    <a class="sicon" href="https://x.com">
+                        <img src="AFBEELDING/twitter.png" alt="Twitter" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="fcol">
+                <h1 class="ftitle">Shop</h1>
+                <a href="#">🖱 Mouse</a>
+                <a href="#">🖥 Monitor</a>
+                <a href="#">⌨️ Keyboard</a>
+                <a href="#">📱 Mobile</a>
+            </div>
+
+            <div class="fcol">
+                <h1 class="ftitle">Links</h1>
+                <a href="about.html">About</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="fcol">
+                <h1 class="ftitle">Contact</h1>
+                <a href="mailto:info@luxshop.com">info@luxshop.com</a>
+                <a href="tel:+3212345678">+32 12 345 678</a>
+                <a href="#">Brussels, Belgium</a>
+            </div>
+
+            <div class="fbot">© 2026 LuxShop — All rights reserved.</div>
+        </footer>
+
+        <a href="#" class="top-btn">↑</a>
+
+
+
+
+
+
+
+
+
+    </body>
+
 </html>
