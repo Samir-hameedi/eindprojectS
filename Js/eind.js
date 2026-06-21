@@ -62,16 +62,6 @@ btn.addEventListener("click", () => {
 });
 
 
-const monitor = document.querySelector(".mon-categorie");
-const mobile = document.querySelector(".mob-categorie");
-
-
-monitor.addEventListener("click", function () {
-    search.value = "hp";
-});
-mobile.addEventListener("click", function () {
-    search.value = "hp";
-});
 
 let allProducts = [];
 async function renderProducts() {

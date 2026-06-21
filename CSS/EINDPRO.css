@@ -316,11 +316,7 @@ body {
 /* Scrollable products list */
 .buy-producten {
     flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
     overflow-y: auto;
-    /* ai */
-
     padding: 12px;
     display: flex;
     flex-direction: column;
@@ -438,6 +434,8 @@ body {
     display: flex;
 }
 
+
+
 .BtnBasket button {
     width: 50%;
     height: 52px;
@@ -494,7 +492,6 @@ body {
     max-width: 800px;
     height: 30vh;
     min-height: 220px;
-    border-radius: 16px;
     position: relative;
     display: flex;
 
@@ -535,13 +532,13 @@ body {
 }
 
 .detail-info {
+    flex-grow: 1;
     padding: 24px 20px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-
     overflow-y: auto;
-    /* ai */
+    
 
 }
 
@@ -597,7 +594,7 @@ body {
 .card {
     background: #fff;
     border-radius: 14px;
-    border: 1px solid #e8e4de;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     width: 220px;
     padding: 14px;
     display: flex;
@@ -616,8 +613,6 @@ body {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
     padding-top: 10px;
 }
 
@@ -635,9 +630,6 @@ body {
     color: #1a1814;
     line-height: 1.35;
     margin-bottom: 8px;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
 }
 
 .card-price {
@@ -1001,6 +993,9 @@ body {
 
 
 
+/* //////////////////////////////////// */
+/* //////////Contact page/////////// */
+/* //////////////////////////////////// */
 
 
 
@@ -1028,16 +1023,15 @@ body {
     color: #aaa;
 }
 
-/* Main layout */
+
 .contact-wrapper {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
 }
 
-/* Info cards column */
+
 .contact-info {
-    flex: 1;
     min-width: 200px;
     display: flex;
     flex-direction: column;
@@ -1139,7 +1133,7 @@ body {
 }
 
 .form-group textarea {
-    resize: vertical;
+    resize: none;
     min-height: 100px;
 }
 
@@ -1164,8 +1158,9 @@ body {
     font-family: sans-serif;
 }
 
-.submit-btn:hover {
+.submit-btn:focus {
     background: #e05e00;
+    transform: scale(0.9);
 }
 
 .submit-btn i {
