@@ -1084,7 +1084,9 @@ body {
 
 /* Form column */
 .contact-form {
-    flex: 1.4;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
     min-width: 260px;
     background: #1a1a1a;
     border: 0.5px solid #333;
